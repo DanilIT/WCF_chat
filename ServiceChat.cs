@@ -27,7 +27,7 @@ namespace WCF_chat
             };
             nextId++;
 
-            SendMsg(user.Name + " ID: " + "Connected to chat!", 0);
+            SendMsg(": " +user.Name + " ID: " + user.ID + " Connected to chat!", 0);
             users.Add(user);
             return user.ID;
         }
@@ -38,7 +38,7 @@ namespace WCF_chat
             if (user != null)
             {
                 users.Remove(user);
-                SendMsg(user.Name + " ID: " + user.ID + "Left chat!", 0);
+                SendMsg(": " + user.Name + " ID: " + user.ID + " Left chat!", 0);
             }
         }           
 
@@ -56,7 +56,7 @@ namespace WCF_chat
                 }
                 answer += msg;
 
-
+                item.operationContext.GetCallbackChannel<IServerChatCallback>().MsgCallback(answer);
             }
         }
     }

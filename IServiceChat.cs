@@ -25,6 +25,6 @@ namespace WCF_chat
     public interface IServerChatCallback
     {                      //чтобы сервер не ожидал ответа      
         [OperationContract(IsOneWay = true)]
-        void MsgCallback(string msg, int id);
+        void MsgCallback(string msg);
     }
 }
